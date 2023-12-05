@@ -1,0 +1,11 @@
+{
+  "name": "blockchainta",
+  "version": "1.0.0",
+  "description": "Dandi Agus Maulana\r Seminar Januari 2024\r Sidang Februari 2024",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
