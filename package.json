@@ -4,6 +4,9 @@
   "description": "Dandi Agus Maulana\r Seminar Januari 2024\r Sidang Februari 2024",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
+    "start": "vite preview",
+    "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
