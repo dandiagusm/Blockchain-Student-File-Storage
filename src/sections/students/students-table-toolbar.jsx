@@ -18,11 +18,6 @@ export default function StudentsTableToolbar({filterName, onFilterName }) {
         height: 96,
         display: 'flex',
         justifyContent: 'space-between',
-        // p: (theme) => theme.spacing(0, 1, 0, 3),
-        // ...({
-        //   color: 'primary.main',
-        //   bgcolor: 'primary.lighter',
-        // }),
       }}
     >
         <OutlinedInput

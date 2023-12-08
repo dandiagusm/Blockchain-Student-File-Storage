@@ -126,7 +126,6 @@ export default function StudentsPage() {
                 orderBy={orderBy}
                 rowCount={users.length}
                 onRequestSort={handleSort}
-                // onSelectAllClick={handleSelectAllClick}
                 headLabel={[
                   { id: 'No', label: 'No' },
                   { id: 'name', label: 'Name' },
@@ -147,7 +146,6 @@ export default function StudentsPage() {
                       status={row.status}
                       files={row.files}
                       avatarUrl={row.avatarUrl}
-                      // onClick={(event) => handleClickStudent(event, row)}
                       handleClick={(event) => handleClickStudent(event, row)}
                     />
                   ))}
