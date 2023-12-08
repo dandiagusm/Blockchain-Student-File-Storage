@@ -11,18 +11,18 @@ import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function StudentsTableToolbar({ numSelected, filterName, onFilterName }) {
+export default function StudentsTableToolbar({filterName, onFilterName }) {
   return (
     <Toolbar
       sx={{
         height: 96,
         display: 'flex',
         justifyContent: 'space-between',
-        p: (theme) => theme.spacing(0, 1, 0, 3),
-        ...(numSelected > 0 && {
-          color: 'primary.main',
-          bgcolor: 'primary.lighter',
-        }),
+        // p: (theme) => theme.spacing(0, 1, 0, 3),
+        // ...({
+        //   color: 'primary.main',
+        //   bgcolor: 'primary.lighter',
+        // }),
       }}
     >
         <OutlinedInput
@@ -43,7 +43,6 @@ export default function StudentsTableToolbar({ numSelected, filterName, onFilter
 }
 
 StudentsTableToolbar.propTypes = {
-  numSelected: PropTypes.number,
   filterName: PropTypes.string,
   onFilterName: PropTypes.func,
 };

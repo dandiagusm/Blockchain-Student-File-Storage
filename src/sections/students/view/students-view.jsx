@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
@@ -25,11 +26,13 @@ import { emptyRows, applyFilter, getComparator } from '../utils';
 // ----------------------------------------------------------------------
 
 export default function StudentsPage() {
+  const navigate = useNavigate();
+
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
 
-  const [selected, setSelected] = useState([]);
+  // const [selected] = useState([]);
 
   const [orderBy, setOrderBy] = useState('name');
 
@@ -45,32 +48,32 @@ export default function StudentsPage() {
     }
   };
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = users.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
+  // const handleSelectAllClick = (event) => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = users.map((n) => n.name);
+  //     setSelected(newSelecteds);
+  //     return;
+  //   }
+  //   setSelected([]);
+  // };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
-  };
+  // const handleClick = (event, name) => {
+  //   const selectedIndex = selected.indexOf(name);
+  //   let newSelected = [];
+  //   if (selectedIndex === -1) {
+  //     newSelected = newSelected.concat(selected, name);
+  //   } else if (selectedIndex === 0) {
+  //     newSelected = newSelected.concat(selected.slice(1));
+  //   } else if (selectedIndex === selected.length - 1) {
+  //     newSelected = newSelected.concat(selected.slice(0, -1));
+  //   } else if (selectedIndex > 0) {
+  //     newSelected = newSelected.concat(
+  //       selected.slice(0, selectedIndex),
+  //       selected.slice(selectedIndex + 1)
+  //     );
+  //   }
+  //   setSelected(newSelected);
+  // };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -92,6 +95,11 @@ export default function StudentsPage() {
     filterName,
   });
 
+  function handleClickStudent(event, row){
+    console.log(row);
+    navigate('/products');  
+  }
+
   const notFound = !dataFiltered.length && !!filterName;
 
   return (
@@ -99,14 +107,13 @@ export default function StudentsPage() {
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
         <Typography variant="h4">List Students</Typography>
 
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill"  onClick={(event) => handleClickStudent(event, "row")}/>}>
           New Student
         </Button>
       </Stack>
 
       <Card>
         <StudentsTableToolbar
-          numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
         />
@@ -118,9 +125,8 @@ export default function StudentsPage() {
                 order={order}
                 orderBy={orderBy}
                 rowCount={users.length}
-                numSelected={selected.length}
                 onRequestSort={handleSort}
-                onSelectAllClick={handleSelectAllClick}
+                // onSelectAllClick={handleSelectAllClick}
                 headLabel={[
                   { id: 'No', label: 'No' },
                   { id: 'name', label: 'Name' },
@@ -135,14 +141,14 @@ export default function StudentsPage() {
                   .map((row, index) => (
                     <StudentsTableRow
                       key={row.id}
-                      number={index+1}
+                      number={(page) * rowsPerPage + index+1}
                       name={row.name}
                       semester={row.semester}
                       status={row.status}
                       files={row.files}
                       avatarUrl={row.avatarUrl}
-                      selected={selected.indexOf(row.name) !== -1}
-                      handleClick={(event) => handleClick(event, row.name)}
+                      // onClick={(event) => handleClickStudent(event, row)}
+                      handleClick={(event) => handleClickStudent(event, row)}
                     />
                   ))}
 

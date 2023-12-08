@@ -1,6 +1,8 @@
 // import { useState } from 'react';
 import PropTypes from 'prop-types';
+// import { useNavigate } from 'react-router-dom'
 
+import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 // import Popover from '@mui/material/Popover';
@@ -8,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 // import Checkbox from '@mui/material/Checkbox';
 // import MenuItem from '@mui/material/MenuItem';
 import TableCell from '@mui/material/TableCell';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 // import IconButton from '@mui/material/IconButton';
 
 import Label from 'src/components/label';
@@ -17,14 +19,18 @@ import Label from 'src/components/label';
 // ----------------------------------------------------------------------
 
 export default function StudentsTableRow({
+  key,
   number,
   name,
   avatarUrl,
   semester,
   files,
-  isVerified,
   status,
+  handleClick
 }) {
+  const onHandleClick = (property) => (event) => {
+    handleClick(event, property);
+  };
   // const [open, setOpen] = useState(null);
 
   // const handleOpenMenu = (event) => {
@@ -45,9 +51,9 @@ export default function StudentsTableRow({
         <TableCell component="th" scope="row" padding="none">
           <Stack direction="row" alignItems="center" spacing={2}>
             <Avatar alt={name} src={avatarUrl} />
-            <Typography variant="subtitle2" noWrap>
+            <Link color="inherit" underline="hover" variant="subtitle2" noWrap onClick={onHandleClick({key, number, name, avatarUrl, semester, files, status})}>
               {name}
-            </Typography>
+            </Link>
           </Stack>
         </TableCell>
 
@@ -91,11 +97,12 @@ export default function StudentsTableRow({
 }
 
 StudentsTableRow.propTypes = {
+  key: PropTypes.any,
   avatarUrl: PropTypes.any,
   semester: PropTypes.any,
-  isVerified: PropTypes.any,
   name: PropTypes.any,
   files: PropTypes.any,
   number: PropTypes.any,
   status: PropTypes.string,
+  handleClick: PropTypes.func,
 };

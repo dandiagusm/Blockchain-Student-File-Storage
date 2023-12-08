@@ -14,11 +14,8 @@ import { visuallyHidden } from './utils';
 export default function StudentsTableHead({
   order,
   orderBy,
-  rowCount,
   headLabel,
-  numSelected,
   onRequestSort,
-  onSelectAllClick,
 }) {
   const onSort = (property) => (event) => {
     onRequestSort(event, property);
@@ -58,9 +55,6 @@ export default function StudentsTableHead({
 StudentsTableHead.propTypes = {
   order: PropTypes.oneOf(['asc', 'desc']),
   orderBy: PropTypes.string,
-  rowCount: PropTypes.number,
   headLabel: PropTypes.array,
-  numSelected: PropTypes.number,
   onRequestSort: PropTypes.func,
-  onSelectAllClick: PropTypes.func,
 };
