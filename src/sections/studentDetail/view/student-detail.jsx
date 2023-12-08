@@ -1,29 +1,28 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import { products } from 'src/_mock/products';
+import { files } from 'src/_mock/files';
 
-import ProductCard from '../product-card';
-import ProductSort from '../product-sort';
-import ProductFilters from '../product-filters';
-import ProductCartWidget from '../product-cart-widget';
+import FileCard from '../file-card';
+import FileSort from '../file-sort';
 
 // ----------------------------------------------------------------------
 
 export default function StudentDetailView() {
-  const [openFilter, setOpenFilter] = useState(false);
+  // const { itemId, otherParam } = route.params;
+  // const [openFilter, setOpenFilter] = useState(false);
 
-  const handleOpenFilter = () => {
-    setOpenFilter(true);
-  };
+  // const handleOpenFilter = () => {
+  //   setOpenFilter(true);
+  // };
 
-  const handleCloseFilter = () => {
-    setOpenFilter(false);
-  };
+  // const handleCloseFilter = () => {
+  //   setOpenFilter(false);
+  // };
 
   return (
     <Container>
@@ -39,25 +38,17 @@ export default function StudentDetailView() {
         sx={{ mb: 5 }}
       >
         <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-          <ProductFilters
-            openFilter={openFilter}
-            onOpenFilter={handleOpenFilter}
-            onCloseFilter={handleCloseFilter}
-          />
-
-          <ProductSort />
+          <FileSort />
         </Stack>
       </Stack>
 
       <Grid container spacing={3}>
-        {products.map((product) => (
-          <Grid key={product.id} xs={12} sm={6} md={3}>
-            <ProductCard product={product} />
+        {files.map((file) => (
+          <Grid key={file.id} xs={12} sm={6} md={3}>
+            <FileCard file={file} />
           </Grid>
         ))}
       </Grid>
-
-      <ProductCartWidget />
     </Container>
   );
 }

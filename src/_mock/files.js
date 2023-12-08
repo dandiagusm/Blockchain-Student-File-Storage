@@ -19,10 +19,21 @@ export const files = [
         id: faker.string.uuid(),
         image: `/assets/images/products/product_1.jpg`,
         ownerId: 1,
+        name: FILES_NAME[0],
+        timeCreated: faker.date.anytime(),
+        sendBy: 'Admin',
+        status: sample(['Shared', 'Not Shared']),
+        cover: `/assets/images/rapor/rapor.png`,
+    },
+    {
+        id: faker.string.uuid(),
+        image: `/assets/images/products/product_1.jpg`,
+        ownerId: 1,
         name: FILES_NAME[1],
         timeCreated: faker.date.anytime(),
         sendBy: 'Admin',
         status: sample(['Shared', 'Not Shared']),
+        cover: `/assets/images/rapor/rapor.png`,
     },
     {
         id: faker.string.uuid(),
@@ -32,6 +43,7 @@ export const files = [
         timeCreated: faker.date.anytime(),
         sendBy: 'Admin',
         status: sample(['Shared', 'Not Shared']),
+        cover: `/assets/images/rapor/rapor.png`,
     },
     {
         id: faker.string.uuid(),
@@ -41,6 +53,7 @@ export const files = [
         timeCreated: faker.date.anytime(),
         sendBy: 'Admin',
         status: sample(['Shared', 'Not Shared']),
+        cover: `/assets/images/rapor/rapor.png`,
     },
     {
         id: faker.string.uuid(),
@@ -50,6 +63,7 @@ export const files = [
         timeCreated: faker.date.anytime(),
         sendBy: 'Admin',
         status: sample(['Shared', 'Not Shared']),
+        cover: `/assets/images/rapor/rapor.png`,
     },
     {
         id: faker.string.uuid(),
@@ -59,5 +73,6 @@ export const files = [
         timeCreated: faker.date.anytime(),
         sendBy: 'Admin',
         status: sample(['Shared', 'Not Shared']),
+        cover: `/assets/images/rapor/rapor.png`,
     }
 ];
