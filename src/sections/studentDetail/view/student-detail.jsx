@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
@@ -13,23 +14,18 @@ import FileSort from '../file-sort';
 // ----------------------------------------------------------------------
 
 export default function StudentDetailView() {
-  // const { itemId, otherParam } = route.params;
-  // const [openFilter, setOpenFilter] = useState(false);
 
-  // const handleOpenFilter = () => {
-  //   setOpenFilter(true);
-  // };
-
-  // const handleCloseFilter = () => {
-  //   setOpenFilter(false);
-  // };
-
+  const state = useLocation();
+  const {name, id} = state.state;
+  
   return (
     <Container>
       <Typography variant="h4" sx={{ mb: 5 }}>
-        Products
+        {name} (ID : {id})
       </Typography>
-
+      <Typography variant="p" sx={{ mb: 2 }}>
+        Number of file :
+      </Typography>
       <Stack
         direction="row"
         alignItems="center"

@@ -19,7 +19,7 @@ import Label from 'src/components/label';
 // ----------------------------------------------------------------------
 
 export default function StudentsTableRow({
-  key,
+  id,
   number,
   name,
   avatarUrl,
@@ -31,15 +31,6 @@ export default function StudentsTableRow({
   const onHandleClick = (property) => (event) => {
     handleClick(event, property);
   };
-  // const [open, setOpen] = useState(null);
-
-  // const handleOpenMenu = (event) => {
-  //   setOpen(event.currentTarget);
-  // };
-
-  // const handleCloseMenu = () => {
-  //   setOpen(null);
-  // };
 
   return (
     <>
@@ -51,7 +42,9 @@ export default function StudentsTableRow({
         <TableCell component="th" scope="row" padding="none">
           <Stack direction="row" alignItems="center" spacing={2}>
             <Avatar alt={name} src={avatarUrl} />
-            <Link color="inherit" underline="hover" variant="subtitle2" noWrap onClick={onHandleClick({key, number, name, avatarUrl, semester, files, status})}>
+            <Link color="inherit" underline="hover" variant="subtitle2" noWrap onClick={onHandleClick({
+                student_id: id, student_name: name
+              })}>
               {name}
             </Link>
           </Stack>
@@ -97,7 +90,7 @@ export default function StudentsTableRow({
 }
 
 StudentsTableRow.propTypes = {
-  key: PropTypes.any,
+  id: PropTypes.any,
   avatarUrl: PropTypes.any,
   semester: PropTypes.any,
   name: PropTypes.any,

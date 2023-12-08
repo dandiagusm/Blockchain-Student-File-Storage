@@ -48,33 +48,6 @@ export default function StudentsPage() {
     }
   };
 
-  // const handleSelectAllClick = (event) => {
-  //   if (event.target.checked) {
-  //     const newSelecteds = users.map((n) => n.name);
-  //     setSelected(newSelecteds);
-  //     return;
-  //   }
-  //   setSelected([]);
-  // };
-
-  // const handleClick = (event, name) => {
-  //   const selectedIndex = selected.indexOf(name);
-  //   let newSelected = [];
-  //   if (selectedIndex === -1) {
-  //     newSelected = newSelected.concat(selected, name);
-  //   } else if (selectedIndex === 0) {
-  //     newSelected = newSelected.concat(selected.slice(1));
-  //   } else if (selectedIndex === selected.length - 1) {
-  //     newSelected = newSelected.concat(selected.slice(0, -1));
-  //   } else if (selectedIndex > 0) {
-  //     newSelected = newSelected.concat(
-  //       selected.slice(0, selectedIndex),
-  //       selected.slice(selectedIndex + 1)
-  //     );
-  //   }
-  //   setSelected(newSelected);
-  // };
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -96,8 +69,7 @@ export default function StudentsPage() {
   });
 
   function handleClickStudent(event, row){
-    console.log(row);
-    navigate('/student-detail');  
+    navigate("/student-detail", { state: row } );  
   }
 
   const notFound = !dataFiltered.length && !!filterName;
@@ -107,7 +79,7 @@ export default function StudentsPage() {
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
         <Typography variant="h4">List Students</Typography>
 
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill"  onClick={(event) => handleClickStudent(event, "row")}/>}>
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
           New Student
         </Button>
       </Stack>
@@ -140,6 +112,7 @@ export default function StudentsPage() {
                   .map((row, index) => (
                     <StudentsTableRow
                       key={row.id}
+                      id={row.id}
                       number={(page) * rowsPerPage + index+1}
                       name={row.name}
                       semester={row.semester}
