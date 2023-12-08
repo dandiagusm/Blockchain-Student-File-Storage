@@ -14,7 +14,7 @@ import ProductCartWidget from '../product-cart-widget';
 
 // ----------------------------------------------------------------------
 
-export default function ProductsView() {
+export default function StudentDetailView() {
   const [openFilter, setOpenFilter] = useState(false);
 
   const handleOpenFilter = () => {

@@ -1,1 +1,1 @@
-export { default as ProductsView } from './products-view';
+export { default as StudentDetailView } from './student-detail';

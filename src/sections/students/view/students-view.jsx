@@ -97,7 +97,7 @@ export default function StudentsPage() {
 
   function handleClickStudent(event, row){
     console.log(row);
-    navigate('/products');  
+    navigate('/student-detail');  
   }
 
   const notFound = !dataFiltered.length && !!filterName;
