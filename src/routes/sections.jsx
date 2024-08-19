@@ -4,7 +4,6 @@ import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/dashboard';
 
 export const IndexPage = lazy(() => import('src/pages/app'));
-export const BlogPage = lazy(() => import('src/pages/blog'));
 export const StudentsPage = lazy(() => import('src/pages/students'));
 export const LoginPage = lazy(() => import('src/pages/login'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
@@ -13,21 +12,20 @@ export const StudentDetailPage = lazy(() => import('src/pages/student-detail'));
 
 // ----------------------------------------------------------------------
 
-export default function Router() {
+export default function Router(props) {
   const routes = useRoutes([
     {
       element: (
-        <DashboardLayout>
+        <DashboardLayout >
           <Suspense>
             <Outlet />
           </Suspense>
         </DashboardLayout>
       ),
       children: [
-        { element: <IndexPage />, index: true },
-        { path: 'students', element: <StudentsPage /> },
-        { path: 'products', element: <BlogPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        { element: <IndexPage props= {props} />, index: true },
+        { path: 'students', element: <StudentsPage props = {props} /> },
+        { path: 'products', element: <ProductsPage /> },
         { path: 'student-detail', element: <StudentDetailPage /> },
       ],
     },

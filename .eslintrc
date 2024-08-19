@@ -42,6 +42,10 @@
     }
   },
   "rules": {
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "no-shadow": 0,
+    "@typescript-eslint/no-shadow": ["off"],
     "no-alert": 0,
     "camelcase": 0,
     "no-console": 0,

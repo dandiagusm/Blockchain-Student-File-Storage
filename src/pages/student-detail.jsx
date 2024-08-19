@@ -4,14 +4,14 @@ import { StudentDetailView } from 'src/sections/studentDetail/view';
 
 // ----------------------------------------------------------------------
 
-export default function StudentDetailPage() {
+export default function StudentDetailPage(props) {
   return (
     <>
       <Helmet>
         <title> Student Detail | Data Siswa </title>
       </Helmet>
 
-      <StudentDetailView />
+      <StudentDetailView props = {props}/>
     </>
   );
 }

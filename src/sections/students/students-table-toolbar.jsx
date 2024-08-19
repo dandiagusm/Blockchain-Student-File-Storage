@@ -16,12 +16,14 @@ export default function StudentsTableToolbar({filterName, onFilterName }) {
     <Toolbar
       sx={{
         height: 96,
+        // width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
       }}
     >
         <OutlinedInput
           value={filterName}
+          sx={{ width: '100%' }}
           onChange={onFilterName}
           placeholder="Search Student..."
           startAdornment={

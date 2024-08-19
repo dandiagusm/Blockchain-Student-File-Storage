@@ -10,6 +10,7 @@ export const contractAbi = abi;
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Pinata IPFS                                  ||
 // ! ||--------------------------------------------------------------------------------||
-export const API_Key =  '378aab8fdbd17593c9eb'
-export const API_Secret=  'dc0e884dd1077f662d74cc41ac2d0135ffc463ed0165138ed65dc065b29b3aa1'
-export const JWT= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJjNzQxODU4YS0wODhkLTQyZTYtYTMyZC02ZjNlZGNmZTY3M2YiLCJlbWFpbCI6InJ1aHVsLm9rQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiIzNzhhYWI4ZmRiZDE3NTkzYzllYiIsInNjb3BlZEtleVNlY3JldCI6ImRjMGU4ODRkZDEwNzdmNjYyZDc0Y2M0MWFjMmQwMTM1ZmZjNDYzZWQwMTY1MTM4ZWQ2NWRjMDY1YjI5YjNhYTEiLCJpYXQiOjE2OTc2NDcwMTR9.G7gsJwNXqXfzExHBWjnDBI7aasvFCluB8puEMV7OZhY'
+export const API_Key =  '670d079a0624dc99c6c4'
+export const API_Secret=  'e48ddfeba5e8b06811517e8a2a512a9c633edae23ef15e1cc99308c1b53552f4'
+export const JWT= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIwMzk4NTFlOS0xNjUyLTQ0ZWItYjNiYi05YjI1NzZkZDA5MjUiLCJlbWFpbCI6ImQuYWd1c21hdWxhbmE5OUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJGUkExIn0seyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJOWUMxIn1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiNjcwZDA3OWEwNjI0ZGM5OWM2YzQiLCJzY29wZWRLZXlTZWNyZXQiOiJlNDhkZGZlYmE1ZThiMDY4MTE1MTdlOGEyYTUxMmE5YzYzM2VkYWUyM2VmMTVlMWNjOTkzMDhjMWI1MzU1MmY0IiwiZXhwIjoxNzU1NDc4NjM0fQ.G7gsJwNXqXfzExHBWjnDBI7aasvFCluB8puEMV7OZhY'
+export const PINATA_PATH= 'https://gateway.pinata.cloud/ipfs/'

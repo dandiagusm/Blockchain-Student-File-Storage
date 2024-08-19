@@ -33,9 +33,10 @@ export default function LoginView() {
   const renderForm = (
     <>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
+        <TextField name="address" label="Address" />
 
         <TextField
+          sx={{ marginTop: 4}}
           name="password"
           label="Password"
           type={showPassword ? 'text' : 'password'}
@@ -59,6 +60,7 @@ export default function LoginView() {
 
       <LoadingButton
         fullWidth
+        sx={{ marginTop: 4}}
         size="large"
         type="submit"
         variant="contained"
@@ -88,7 +90,7 @@ export default function LoginView() {
             maxWidth: 420,
           }}
         >
-          <Typography variant="h4">Sign in to Data Siswa</Typography>
+          <Typography sx={{ marginBottom: 4}} variant="h4">Sign in to Data Siswa</Typography>
 
           {renderForm}
         </Card>

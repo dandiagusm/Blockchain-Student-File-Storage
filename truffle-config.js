@@ -60,7 +60,7 @@ module.exports = {
   networks: {
     ganache: {
       host: "localhost",
-      port: 7545,
+      port: 9545,
       network_id: "*", // Match any network id
       gas: 4700000
     },
@@ -118,7 +118,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.5.0",      // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.13",      // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {

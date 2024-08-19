@@ -13,7 +13,7 @@ import TableCell from '@mui/material/TableCell';
 // import Typography from '@mui/material/Typography';
 // import IconButton from '@mui/material/IconButton';
 
-import Label from 'src/components/label';
+// import Label from 'src/components/label';
 // import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -40,9 +40,9 @@ export default function StudentsTableRow({
         </TableCell>
 
         <TableCell component="th" scope="row" padding="none">
-          <Stack direction="row" alignItems="center" spacing={2}>
+          <Stack direction="row" alignItems="left" spacing={2}>
             <Avatar alt={name} src={avatarUrl} />
-            <Link color="inherit" underline="hover" variant="subtitle2" noWrap onClick={onHandleClick({
+            <Link color="inherit" underline="hover" variant="subtitle2" noWrap sx={{ paddingTop: '8px' }} onClick={onHandleClick({
                 student_id: id, student_name: name
               })}>
               {name}
@@ -50,13 +50,13 @@ export default function StudentsTableRow({
           </Stack>
         </TableCell>
 
-        <TableCell >{semester}</TableCell>
+        {/* <TableCell >{semester}</TableCell> */}
 
-        <TableCell >{files}</TableCell>
+        {/* <TableCell >{files}</TableCell> */}
 
-        <TableCell>
+        {/* <TableCell>
           <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
-        </TableCell>
+        </TableCell> */}
 
         {/* <TableCell align="right">
           <IconButton onClick={handleOpenMenu}>

@@ -1,31 +1,84 @@
-// import { useState } from 'react';
+import Web3 from 'web3';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import Stack from '@mui/material/Stack';
+import {Box, Stack} from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import { files } from 'src/_mock/files';
+// import { files } from 'src/_mock/files';
 
 import FileCard from '../file-card';
 import FileSort from '../file-sort';
+import configuration from '../../../../build/contracts/StudentFile.json';
 
 // ----------------------------------------------------------------------
+const CONTRACT_ADDRESS = configuration.networks['5777'].address;
+const CONTRACT_ABI = configuration.abi;
+
+const web3 = new Web3(
+  // 'http://127.0.0.1:9545'
+  window.ethereum
+);
+const contract = new web3.eth.Contract(
+  CONTRACT_ABI,
+  CONTRACT_ADDRESS
+);
 
 export default function StudentDetailView() {
+  const [file_list, setFiles] = useState([]);
 
   const state = useLocation();
-  const {name, id} = state.state;
-  
+  const {name, nik} = state.state;
+
+  const getAccount = async () => {
+    // const accounts = await web3.eth.requestAccounts();
+    // const accounts = await web3.eth.getAccounts();
+    // const account = accounts[0];
+    // setContractStd(contract);
+    // setAccount(account);
+    // console.log(account_eth);
+  }
+
+  const getStudentFiles = async (e) => {
+    // e.preventDefault();
+    try {
+      const files_temp = await contract.methods.getFilesByNik(nik).call();
+      // console.log("Student File ", files_temp);
+      setFiles(files_temp);
+
+      // return files_temp;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if(window.ethereum){
+      getAccount();
+      getStudentFiles();
+      console.log("std FIle",file_list)
+    } else{
+        console.log("MetaMask is not installed")
+    }
+// eslint-disable-next-line 
+  },[] );
+
   return (
     <Container>
-      <Typography variant="h4" sx={{ mb: 5 }}>
-        {name} (ID : {id})
-      </Typography>
-      <Typography variant="p" sx={{ mb: 2 }}>
-        Number of file :
-      </Typography>
+      <Stack sx={{ border: '1px solid grey', bgcolor: '#FFFFFF', padding: '20px', borderRadius: '25px'}} direction="row" useFlexGap flexWrap="wrap" >
+        <Box sx={{ width: "10%"}}>  
+          <Typography sx={{ fontWeight: 'bold', padding: '5px'}}>NAME </Typography>
+          <Typography sx={{ fontWeight: 'bold', padding: '5px'}}>NIK </Typography>
+          <Typography sx={{ fontWeight: 'bold', padding: '5px'}}>FILES</Typography>              
+        </Box>
+        <Box sx={{ width: "90%"}}>
+          <Typography sx={{ padding: '5px', width: "100%"}}> {name} </Typography>       
+          <Typography sx={{ padding: '5px'}}> {nik} </Typography>
+          <Typography sx={{ padding: '5px'}}> {file_list.length}  </Typography>                 
+        </Box>
+      </Stack>  
       <Stack
         direction="row"
         alignItems="center"
@@ -39,8 +92,8 @@ export default function StudentDetailView() {
       </Stack>
 
       <Grid container spacing={3}>
-        {files.map((file) => (
-          <Grid key={file.id} xs={12} sm={6} md={3}>
+        {file_list.map((file) => (
+          <Grid key={file.ipfs_hash} xs={12} sm={6} md={3}>
             <FileCard file={file} />
           </Grid>
         ))}

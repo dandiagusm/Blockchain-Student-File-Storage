@@ -4,14 +4,14 @@ import { AppView } from 'src/sections/overview/view';
 
 // ----------------------------------------------------------------------
 
-export default function AppPage() {
+export default function AppPage(props) {
   return (
     <>
       <Helmet>
         <title> Dashboard | Data Siswa </title>
       </Helmet>
 
-      <AppView />
+      <AppView props = {props}/>
     </>
   );
 }
