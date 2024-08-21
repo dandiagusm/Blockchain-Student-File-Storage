@@ -29,7 +29,7 @@ import StudentsTableRow from '../students-table-row';
 import StudentsTableHead from '../students-table-head';
 import StudentsTableToolbar from '../students-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
-import configuration from '../../../../build/contracts/StudentDetail.json';
+import configuration from '../../../../build/contracts/StudentRecord.json';
 // import configuration from '../../../../build/contracts/Tickets.json';
 // ----------------------------------------------------------------------
 
@@ -76,11 +76,9 @@ export default function StudentsPage() {
 
     e.preventDefault();
     try {
-      console.log("ADD");
-
       const resp2 = await contract.methods.generateStudent(new_student_nik,new_student_name).send({ from: accounts[0] });
-      
-      console.log("resp ", resp2);
+      // const resp2 = await contract.methods.isStudent("123456").call();
+      console.log("ADD Student ", resp2);
 
       // setNewName("");
       // setNewNik("");
@@ -102,8 +100,8 @@ export default function StudentsPage() {
 
   const handleClickOpen = () => {
     setOpen(true);
-    const resp = contract.methods.getAllStudents().call();
-    console.log("resp ", resp);
+    // const resp = contract.methods.getAllStudents().call();
+    // console.log("ALL Student ", resp);
   };
 
   const handleClose = () => {
@@ -143,7 +141,7 @@ export default function StudentsPage() {
     comparator: getComparator(order, orderBy),
     filterName,
   });
-
+  // console.log("fill",dataFiltered);
   function handleClickStudent(event, row){
     navigate("/student-detail", { state: row } );  
   }
@@ -158,7 +156,8 @@ export default function StudentsPage() {
         comparator: getComparator(order, orderBy),
         filterName,
       });
-      // console.log("all student ", filtered);
+      // console.log("filtered student ", resp);
+      // console.log("list student ", students_list);
       setStudents(filtered);
     } catch (e) {
       console.error("Failed to fetch student")
@@ -196,8 +195,8 @@ export default function StudentsPage() {
             autoFocus
             required
             margin="dense"
-            id="student_nik"
-            name="student_nik"
+            id="student_nisn"
+            name="student_nisn"
             label="Nomor Induk Siswa"
             fullWidth
             variant="standard"
@@ -219,7 +218,7 @@ export default function StudentsPage() {
         </DialogContent>
         <DialogActions>
           <Button variant="contained" color="inherit"  onClick={handleClose}>Cancel</Button>
-          <Button variant="contained" color="inherit"  onClick={addStudent} type="submit">Add Student</Button>
+          <Button variant="contained"  onClick={addStudent} type="submit">Add Student</Button>
         </DialogActions>
       </Dialog>
       </Stack>
@@ -240,8 +239,8 @@ export default function StudentsPage() {
                 onRequestSort={handleSort}
                 headLabel={[
                   { id: 'No', label: 'No', width: '5px' },
-                  { id: 'name', label: 'Name' },
-                  // { id: 'semester', label: 'Semester' },
+                  { id: 'nikname', label: 'Name' },
+                  { id: 'nik', label: 'Nomor Induk Siswa' },
                   // { id: 'files', label: 'Files' },
                   // { id: 'status', label: 'Status' },
                 ]}
@@ -255,7 +254,7 @@ export default function StudentsPage() {
                       id={row.nik}
                       number={(page) * rowsPerPage + index+1}
                       name={row.name}
-                      // semester={row.semester}
+                      nik={row.nik}
                       // status={row.status}
                       // files={row.files}
                       // avatarUrl={row.avatarUrl}

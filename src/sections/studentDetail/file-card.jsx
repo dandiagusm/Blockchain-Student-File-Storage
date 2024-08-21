@@ -118,7 +118,7 @@ export default function FileCard({ file }) {
           <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap">
             <Box sx={{ marginRight: '20px' }}>  
               <Typography sx={{ fontWeight: 'bold' }}>Issuer </Typography>
-              <Typography sx={{ fontWeight: 'bold' }}>NIK </Typography>
+              <Typography sx={{ fontWeight: 'bold' }}>NIS </Typography>
               <Typography sx={{ fontWeight: 'bold' }}>Season </Typography>     
               <Typography sx={{ fontWeight: 'bold' }}>Hash File </Typography>
               <Typography sx={{ fontWeight: 'bold' }}>Time Created</Typography>              

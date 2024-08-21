@@ -28,7 +28,7 @@ import {useDropzone} from 'react-dropzone';
 // import Dropzone from 'react-dropzone-uploader';
 
 // import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-import configuration from '../../../build/contracts/StudentFile.json';
+import configuration from '../../../build/contracts/FileRecord.json';
 // import configuration from '../../../../build/contracts/Tickets.json';
 // ----------------------------------------------------------------------
 
@@ -47,9 +47,11 @@ const contract = new web3.eth.Contract(
 // ----------------------------------------------------------------------
 import {API_Key, API_Secret, JWT} from "../../utils/constants.js"
 
-export default function AppUploadForm({}) {
+export default function AppUploadForm(props) {
+  const nik = props.nik;
+
   const [new_file_season, setFileSeason] = useState('');
-  const [new_file_nik, setFileNik] = useState('');
+  // const [new_file_nik, setFileNik] = useState('');
   const [new_file_timestamp, setFileTimestamp] = useState('N/A');
   const [new_file_hash, setFileHash] = useState('N/A');
   const [account_eth , setAccount] = useState('N/A');
@@ -78,19 +80,19 @@ export default function AppUploadForm({}) {
       
       // const response = await contract.methods.generateStdFile(account_eth, new_file_nik,new_file_hash, new_file_season, new_file_timestamp).send({ from: accounts[0] });
 
-      const response = await contract.methods.generateStdFile(accounts[0], new_file_nik,new_file_hash, new_file_season, new_file_timestamp).send({ from: accounts[0] });
+      const response = await contract.methods.generateStdFile(accounts[0], nik,new_file_hash, new_file_season, new_file_timestamp).send({ from: accounts[0] });
       
       // console.log("resp", resp)
       console.log("FILE ADD ", response);
       alert("File Added to Ethereum");
 
       setFileSeason('');
-      setFileNik('');
+      // setFileNik('');
       window.location.reload()
 
     } catch (error) {
       console.log(error);
-      alert("Unable to add student");
+      alert("Unable to add file");
     }
   };
 
@@ -126,9 +128,9 @@ export default function AppUploadForm({}) {
   const onChangeSeason = event => {
     setFileSeason(event.target.value);
   };
-  const onChangeNik = event => {
-    setFileNik(event.target.value);
-  };
+  // const onChangeNik = event => {
+  //   setFileNik(event.target.value);
+  // };
 
 
   const onUploadHandler = async (event) => {
@@ -251,7 +253,7 @@ export default function AppUploadForm({}) {
             marginRight: 5
           }}
         >
-          <TextField 
+          {/* <TextField 
             fullWidth 
             sx={{marginTop: 2, marginBottom: 2 }} 
             id="outlined-basic" 
@@ -260,7 +262,7 @@ export default function AppUploadForm({}) {
             size="small" 
             value={new_file_nik}
             onChange={onChangeNik}
-          />
+          /> */}
           <FormControl fullWidth>
             <InputLabel sx={{textAlign: "center"}}  id="select-label">Season</InputLabel>
             <Select
@@ -293,12 +295,14 @@ export default function AppUploadForm({}) {
             <Stack direction="row" useFlexGap flexWrap="wrap">
               <Box sx={{ border: '1px solid grey', width: "25%"}}>  
                 <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px', width: '100%'}}>Issuer </Typography>
+                <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px'}}>NIS </Typography>
                 <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px'}}>Hash File </Typography>
                 <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px'}}>Time Created</Typography>              
               </Box>
               <Box sx={{ border: '1px solid grey', borderLeft: '0', width: "75%"}}>
                 <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px', width: "100%"}}> {account_eth} </Typography>       
                 <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px'}}> {new_file_hash} </Typography>
+                <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px'}}> {nik} </Typography>
                 <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px'}}> {new_file_timestamp}  </Typography>                 
               </Box>
             </Stack>  
@@ -310,7 +314,7 @@ export default function AppUploadForm({}) {
           }}
         >
           <Button variant="contained" onClick={addFile} type="submit" 
-            disabled={files.length === 0 || new_file_hash === 'N/A' || new_file_nik.length === 0 || new_file_season.length === 0} 
+            disabled={files.length === 0 || new_file_hash === 'N/A' || nik.length === 0 || new_file_season.length === 0} 
           >
               Submit to Ethereum
           </Button>

@@ -1,7 +1,8 @@
 import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-// import Link from '@mui/material/Link';
+import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
@@ -27,13 +28,17 @@ export default function LoginView() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClick = () => {
-    router.push('/dashboard');
+    router.push('/');
   };
+
+  // const handleRegister = () => {
+  //   router.push('/register');
+  // };
 
   const renderForm = (
     <>
       <Stack spacing={3}>
-        <TextField name="address" label="Address" />
+        <TextField name="email" label="Email" />
 
         <TextField
           sx={{ marginTop: 4}}
@@ -52,11 +57,11 @@ export default function LoginView() {
         />
       </Stack>
 
-      {/* <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ my: 3 }}>
-        <Link variant="subtitle2" underline="hover">
-          Forgot password?
+      <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ my: 3 }}>
+        <Link variant="subtitle2" href="/register" underline="hover">
+          Register?
         </Link>
-      </Stack> */}
+      </Stack>
 
       <LoadingButton
         fullWidth

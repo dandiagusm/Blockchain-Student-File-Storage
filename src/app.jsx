@@ -10,7 +10,7 @@ import 'src/global.css';
 import ThemeProvider from 'src/theme';
 
 // import configurationAdmin from '../build/contracts/Administrator.json';
-import configurationStudent from '../build/contracts/StudentDetail.json';
+import configurationStudent from '../build/contracts/StudentRecord.json';
 // import connectToMetamask from './Metamask';
 
 

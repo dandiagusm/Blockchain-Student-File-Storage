@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-contract StudentFile {
+contract FileRecord {
     struct StdFile {
       address issuer;
       string nik;
@@ -30,11 +30,14 @@ contract StudentFile {
         uint256 _season,
         string memory _created_time
     ) public {
-        // Check if certificate with the given ID already exists
-        // require(
-        //     bytes(StdFiles[_student_file_id].ipfs_hash).length == 0,
-        //     "Files with this ID already exists"
-        // );
+
+        StdFile memory file_temp = getStdFile(_ipfs_hash);
+
+        // Check if file with the given hash already exists
+        require(
+            bytes(file_temp.ipfs_hash).length == 0,
+            "Files with this ID already exists"
+        );
 
         // Create the certificate
         StdFile memory file = StdFile({

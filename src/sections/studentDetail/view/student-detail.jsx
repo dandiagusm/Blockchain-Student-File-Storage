@@ -11,7 +11,8 @@ import Typography from '@mui/material/Typography';
 
 import FileCard from '../file-card';
 import FileSort from '../file-sort';
-import configuration from '../../../../build/contracts/StudentFile.json';
+import AppUploadForm from '../app-upload-form';
+import configuration from '../../../../build/contracts/FileRecord.json';
 
 // ----------------------------------------------------------------------
 const CONTRACT_ADDRESS = configuration.networks['5777'].address;
@@ -28,6 +29,7 @@ const contract = new web3.eth.Contract(
 
 export default function StudentDetailView() {
   const [file_list, setFiles] = useState([]);
+  // const [check_render, setRender] = useState(false);
 
   const state = useLocation();
   const {name, nik} = state.state;
@@ -39,6 +41,16 @@ export default function StudentDetailView() {
     // setContractStd(contract);
     // setAccount(account);
     // console.log(account_eth);
+  }
+
+  const renderHeaderListFile = () => {
+    if (file_list.length !== 0){
+      return(
+        <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: 3}}>List Files </Typography>
+      )
+    } 
+      
+    return (<Typography sx={{ fontWeight: 'bold', color:'red' }}>Belum Ada File </Typography>)
   }
 
   const getStudentFiles = async (e) => {
@@ -58,7 +70,7 @@ export default function StudentDetailView() {
     if(window.ethereum){
       getAccount();
       getStudentFiles();
-      console.log("std FIle",file_list)
+      // console.log("std FIle",file_list)
     } else{
         console.log("MetaMask is not installed")
     }
@@ -70,7 +82,7 @@ export default function StudentDetailView() {
       <Stack sx={{ border: '1px solid grey', bgcolor: '#FFFFFF', padding: '20px', borderRadius: '25px'}} direction="row" useFlexGap flexWrap="wrap" >
         <Box sx={{ width: "10%"}}>  
           <Typography sx={{ fontWeight: 'bold', padding: '5px'}}>NAME </Typography>
-          <Typography sx={{ fontWeight: 'bold', padding: '5px'}}>NIK </Typography>
+          <Typography sx={{ fontWeight: 'bold', padding: '5px'}}>NIS </Typography>
           <Typography sx={{ fontWeight: 'bold', padding: '5px'}}>FILES</Typography>              
         </Box>
         <Box sx={{ width: "90%"}}>
@@ -90,14 +102,21 @@ export default function StudentDetailView() {
           <FileSort />
         </Stack>
       </Stack>
-
-      <Grid container spacing={3}>
-        {file_list.map((file) => (
-          <Grid key={file.ipfs_hash} xs={12} sm={6} md={3}>
-            <FileCard file={file} />
-          </Grid>
-        ))}
-      </Grid>
+      <Stack sx={{ gcolor: '#FFFFFF', marginBottom: 5}}  >
+        {renderHeaderListFile()}
+        <Grid container spacing={3}>
+          {file_list.map((file) => (
+            <Grid key={file.ipfs_hash} xs={12} sm={6} md={3}>
+              <FileCard file={file} />
+            </Grid>
+          ))}
+        </Grid>
+      </Stack>
+      <Grid xs={12} md={6} lg={12}>
+          <AppUploadForm
+            nik={nik}
+          />
+        </Grid>
     </Container>
   );
 }

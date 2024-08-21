@@ -3,67 +3,70 @@ pragma solidity ^0.8.13;
 
 contract Administrator {
     struct Admin {
-      string id;
+      string email;
       string name;
-      string contact;
+      string password;
     }
 
     mapping(string => Admin) public Admins;
-    event AdminGenerated(string std_id);
+    event AdminGenerated(string email);
 
     function generateAdmin(
-        string memory _id,
+        string memory _email,
         string memory _name,
-        string memory _contact
+        string memory _password
     ) public {
         // Check if certificate with the given ID already exists
         require(
-            bytes(Admins[_id].id).length == 0,
-            "Student with this ID already exists"
+            bytes(Admins[_email].email).length == 0,
+            "Admin with this email already exists"
         );
 
         // Create the certificate
         Admin memory admin = Admin({
-            id: _id,
+            email: _email,
             name: _name,
-            contact: _contact
+            password: _password
         });
 
         // Store the certificate in the mapping
-        Admins[_id] = admin;
+        Admins[_email] = admin;
 
         // Emit an event
-        emit AdminGenerated(_id);
+        emit AdminGenerated(_email);
     }
 
     function getAdmin(
-        string memory id
+        string memory email,
+        string memory password
     )
         public
         view
         returns (
           string memory _name,
-          string memory _contact
+          string memory _email,
+          string memory _password
         )
     {
-        Admin memory admin = Admins[id];
+        Admin memory admin = Admins[email];
 
-        // Check if the certificate with the given ID exists
+        // Check if the admin with the given email exists
         require(
-            bytes(Admins[id].name).length != 0,
+            bytes(Admins[email].name).length != 0 && bytes(Admins[password].password).length != 0 ,
             "Admin does not exist"
         );
 
         // Return the values from the certificate
         return (
             admin.name,
-            admin.contact
+            admin.email,
+            admin.password
         );
     }
 
     function isVerified(
-        string memory _id
+        string memory _email
     ) public view returns (bool) {
-        return bytes(Admins[_id].name).length != 0;
+        return bytes(Admins[_email].name).length != 0;
     }
 }

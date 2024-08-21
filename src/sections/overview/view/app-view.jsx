@@ -7,11 +7,11 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 // import Typography from '@mui/material/Typography';
 
-import AppUploadForm from '../app-upload-form';
+import AppSearchIpfs from '../app-search-ipfs';
+// import AppUploadForm from '../app-upload-form';
 import AppWidgetSummary from '../app-widget-summary';
-import configurationFile from '../../../../build/contracts/StudentFile.json';
-import configurationStudent from '../../../../build/contracts/StudentDetail.json';
-// import configuration from '../../../../build/contracts/Tickets.json';
+import configurationFile from '../../../../build/contracts/FileRecord.json';
+import configurationStudent from '../../../../build/contracts/StudentRecord.json';
 // ----------------------------------------------------------------------
 
 const CONTRACT_ADDRESS_STUDENT = configurationStudent.networks['5777'].address;
@@ -87,9 +87,13 @@ export default function AppView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
         </Grid>
-
-        <Grid xs={12} md={6} lg={12}>
+        {/* <Grid xs={12} md={6} lg={12}>
           <AppUploadForm
+            sender="Current sender"
+          />
+        </Grid> */}
+        <Grid xs={12} md={6} lg={12}>
+          <AppSearchIpfs
             sender="Current sender"
           />
         </Grid>

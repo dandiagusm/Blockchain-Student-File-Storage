@@ -5,7 +5,7 @@ pragma solidity ^0.8.13;
 // importing String.sol from openzeppelin library
 // import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
-contract StudentDetail {
+contract StudentRecord {
     struct Student {
     //   uint256 id;
       string nik;
@@ -16,13 +16,6 @@ contract StudentDetail {
     event StudentGenerated(string _nik);
     uint256 public studentCounter;
 
-    // constructor() {
-    //     Students["1"].nik = "1" ;
-    //     Students["1"].name = "tesdf";
-    //     studentCounter = 1;
-
-    // }
-
     function addstudentCounter() public 
     {
         studentCounter = studentCounter + 1;
@@ -32,11 +25,13 @@ contract StudentDetail {
         string memory _nik,
         string memory _name
     ) public {
-        // Check if certificate with the given ID already exists
-        // require(
-        //     isStudent(_nik) == false,
-        //     "Student with this ID already exists"
-        // );
+        // Check if student  with the given ID already exists
+        string memory nik_temp = getStudent(_nik).nik;
+
+        require(
+            bytes(nik_temp).length == 0,
+            "Student with this ID already exists"
+        );
 
         // Create the certificate
         Student memory student = Student({
@@ -113,7 +108,6 @@ contract StudentDetail {
         Student[] memory result = new Student[](studentCounter);
         for (uint256 i = 0; i < studentCounter; i++) {
           result[i] = Students[i];
-          i++;
         }
         return result;
     }

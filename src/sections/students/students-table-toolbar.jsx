@@ -25,7 +25,7 @@ export default function StudentsTableToolbar({filterName, onFilterName }) {
           value={filterName}
           sx={{ width: '100%' }}
           onChange={onFilterName}
-          placeholder="Search Student..."
+          placeholder="Search Student By NIK"
           startAdornment={
             <InputAdornment position="start">
               <Iconify

@@ -23,6 +23,7 @@ export default function StudentsTableRow({
   number,
   name,
   avatarUrl,
+  nik,
   semester,
   files,
   status,
@@ -50,7 +51,7 @@ export default function StudentsTableRow({
           </Stack>
         </TableCell>
 
-        {/* <TableCell >{semester}</TableCell> */}
+        <TableCell >{nik}</TableCell>
 
         {/* <TableCell >{files}</TableCell> */}
 
