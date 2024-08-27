@@ -51,12 +51,10 @@ export default function AppUploadForm(props) {
     try {
       const response = await contract.methods.generateStdFile(accounts[0], nik,new_file_hash, new_file_season, new_file_timestamp).send({ from: accounts[0] });
       
-      // console.log("resp", resp)
       console.log("FILE ADD ", response);
       alert("File Added to Ethereum");
 
       setFileSeason('');
-      // setFileNik('');
       window.location.reload()
 
     } catch (error) {
@@ -130,11 +128,8 @@ export default function AppUploadForm(props) {
       <Box
         component="form"
         sx={{ paddingTop: 2 }}
-        // noValidate
-        // autoComplete="off"
         bgcolor= "#FFFFFF"
         padding= "2"
-        // onSubmit={handleSubmit(onSubmit)}
       > 
         <Typography variant="h4" sx={{ marginLeft: 5, mb: 5 }}>
           Upload File To IPFS
