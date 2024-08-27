@@ -2,13 +2,12 @@
 import Web3 from 'web3';
 
 import PropTypes from 'prop-types';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import Stack from '@mui/material/Stack';
 import Select from '@mui/material/Select';
-import { Box, Button, Container } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import MenuItem from '@mui/material/MenuItem';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
