@@ -3,13 +3,6 @@ import Web3 from 'web3';
 
 import PropTypes from 'prop-types';
 import React, {useEffect, useState} from 'react';
-// import Card from '@mui/material/Card';
-// import Paper from '@mui/material/Paper';
-// import Typography from '@mui/material/Typography';
-// import CardHeader from '@mui/material/CardHeader';
-
-// import { fShortenNumber } from 'src/utils/format-number';
-// import { useForm, Controller } from "react-hook-form";
 
 import Stack from '@mui/material/Stack';
 import Select from '@mui/material/Select';
@@ -19,17 +12,10 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-// import DialogActions from '@mui/material/DialogActions';
 
 import {useDropzone} from 'react-dropzone';
-// import { create as ipfsHttpClient } from "ipfs-http-client";
-// import { create as ipfsHttpClient } from "ipfs-http-client";
 
-// import Dropzone from 'react-dropzone-uploader';
-
-// import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import configuration from '../../../build/contracts/FileRecord.json';
-// import configuration from '../../../../build/contracts/Tickets.json';
 // ----------------------------------------------------------------------
 
 const CONTRACT_ADDRESS = configuration.networks['5777'].address;
@@ -59,27 +45,11 @@ export default function AppUploadForm(props) {
   const [can_upload, setCanUpload] = useState(false);
   const [can_submit, setCanSubmit] = useState(false);
 
-
-  // async function getAccount() {
-  //   console.log("Connecting to metamask");
-  //   const accounts = await web3.eth.requestAccounts();
-  //   // const accounts = await web3.eth.getAccounts();
-  //   const account = accounts[0];
-  //   setAccount(accounts[0]);
-  //   // console.log("Account is set ", account);
-  // }
-
   const addFile = async (e) => {
     e.preventDefault();
     const accounts = await web3.eth.requestAccounts();
     setAccount(accounts[0]);
     try {
-      // console.log("ADD FILE");
-      // const resp = await contract.methods.getNumberOfFiles().call();
-      // const resp = await contract.methods.getAllFiles().call();
-      
-      // const response = await contract.methods.generateStdFile(account_eth, new_file_nik,new_file_hash, new_file_season, new_file_timestamp).send({ from: accounts[0] });
-
       const response = await contract.methods.generateStdFile(accounts[0], nik,new_file_hash, new_file_season, new_file_timestamp).send({ from: accounts[0] });
       
       // console.log("resp", resp)
@@ -107,7 +77,6 @@ export default function AppUploadForm(props) {
           method: "POST",
           maxContentLength: Infinity,
           headers: {
-            // Authorization: `Bearer ${JWT}`,
             pinata_api_key: API_Key,
             pinata_secret_api_key: API_Secret
           },
@@ -141,17 +110,8 @@ export default function AppUploadForm(props) {
     }
 
     const file = acceptedFiles[0];
-    // upload files
-    // await getAccount();
+
     await pinFileToIPFS(file);
-    // console.log("acc",account_eth)
-    // await addFile();
-    // try {
-    //   const data = await pinata.gateways.get("QmRyi9C6Qa4zeb5jeyJgs68dzAq4v87xDFfsCw4xtbRarc");
-    //   console.log(data)
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   const {getRootProps, getInputProps, open, acceptedFiles} = useDropzone({
