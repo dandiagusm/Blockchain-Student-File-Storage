@@ -207,16 +207,6 @@ export default function AppUploadForm(props) {
             marginRight: 5
           }}
         >
-          {/* <TextField 
-            fullWidth 
-            sx={{marginTop: 2, marginBottom: 2 }} 
-            id="outlined-basic" 
-            label="Nomor Induk Siswa" 
-            variant="outlined" 
-            size="small" 
-            value={new_file_nik}
-            onChange={onChangeNik}
-          /> */}
           <FormControl fullWidth>
             <InputLabel sx={{textAlign: "center"}}  id="select-label">Season</InputLabel>
             <Select
