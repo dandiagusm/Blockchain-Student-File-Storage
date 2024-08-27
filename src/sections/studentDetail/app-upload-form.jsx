@@ -99,7 +99,6 @@ export default function AppUploadForm(props) {
     setFileNik(event.target.value);
   };
 
-
   const onUploadHandler = async (event) => {
     event.preventDefault();
     
@@ -238,7 +237,7 @@ export default function AppUploadForm(props) {
             <Typography sx={{ fontWeight: 'bold', marginBottom: '10px'  }}>Check Hash File </Typography>
             <Stack direction="row" useFlexGap flexWrap="wrap">
               <Box sx={{ border: '1px solid grey', width: "25%"}}>  
-                <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px', width: '100%'}}>Issuer </Typography>
+                <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px', width: '100%'}}>Issuer Address </Typography>
                 <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px'}}>NIS </Typography>
                 <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px'}}>Hash File </Typography>
                 <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px'}}>Time Created</Typography>              
