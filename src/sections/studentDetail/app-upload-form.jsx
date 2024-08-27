@@ -36,13 +36,13 @@ export default function AppUploadForm(props) {
   const nik = props.nik;
 
   const [new_file_season, setFileSeason] = useState('');
-  const [new_file_nik, setFileNik] = useState('');
   const [new_file_timestamp, setFileTimestamp] = useState('N/A');
   const [new_file_hash, setFileHash] = useState('N/A');
   const [account_eth , setAccount] = useState('N/A');
 
   const [can_upload, setCanUpload] = useState(false);
   const [can_submit, setCanSubmit] = useState(false);
+  const [new_file_nik, setFileNik] = useState('');
 
   const addFile = async (e) => {
     e.preventDefault();
@@ -94,6 +94,7 @@ export default function AppUploadForm(props) {
   const onChangeSeason = event => {
     setFileSeason(event.target.value);
   };
+
   const onChangeNik = event => {
     setFileNik(event.target.value);
   };
