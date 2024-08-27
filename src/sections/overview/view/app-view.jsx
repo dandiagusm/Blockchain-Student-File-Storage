@@ -1,7 +1,11 @@
 // import { faker } from '@faker-js/faker';
 // import { useLocation } from 'react-router-dom';
+
+
 import Web3 from 'web3';
+import { Navigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+// import { useRouter } from 'src/routes/hooks';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -39,6 +43,8 @@ export default function AppView() {
   const [numStudents , setNumStudents] = useState('');
   const [numFiles , setNumFiles] = useState('');
 
+  // const router = useRouter();
+
   const getNumberOfStudent = async (e) => {
     try {
       const resp = await contract_student.methods.getNumberOfStudent().call();
@@ -69,35 +75,40 @@ export default function AppView() {
 
   return (
     <Container maxWidth="xl">
+      {sessionStorage.getItem("name") ? (
       <Grid container spacing={3}>
-        <Grid xs={12} sm={6} md={6}>
-          <AppWidgetSummary
-            title="Total Student"
-            total={Number(numStudents)}
-            color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={6}>
-          <AppWidgetSummary
-            title="Total Files"
-            total={Number(numFiles)}
-            color="warning"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
-          />
-        </Grid>
-        {/* <Grid xs={12} md={6} lg={12}>
-          <AppUploadForm
-            sender="Current sender"
-          />
-        </Grid> */}
-        <Grid xs={12} md={6} lg={12}>
-          <AppSearchIpfs
-            sender="Current sender"
-          />
-        </Grid>
+      <Grid xs={12} sm={6} md={6}>
+        <AppWidgetSummary
+          title="Total Student"
+          total={Number(numStudents)}
+          color="info"
+          icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
+        />
       </Grid>
+
+      <Grid xs={12} sm={6} md={6}>
+        <AppWidgetSummary
+          title="Total Files"
+          total={Number(numFiles)}
+          color="warning"
+          icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
+        />
+      </Grid>
+      {/* <Grid xs={12} md={6} lg={12}>
+        <AppUploadForm
+          sender="Current sender"
+        />
+      </Grid> */}
+      <Grid xs={12} md={6} lg={12}>
+        <AppSearchIpfs
+          sender="Current sender"
+        />
+      </Grid>
+    </Grid>
+      ) : (
+
+        <Navigate to="/login" replace />
+      )}
     </Container>
   );
 }

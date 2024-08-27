@@ -51,13 +51,13 @@ export default function AppUploadForm(props) {
   const nik = props.nik;
 
   const [new_file_season, setFileSeason] = useState('');
-  // const [new_file_nik, setFileNik] = useState('');
+  const [new_file_nik, setFileNik] = useState('');
   const [new_file_timestamp, setFileTimestamp] = useState('N/A');
   const [new_file_hash, setFileHash] = useState('N/A');
   const [account_eth , setAccount] = useState('N/A');
 
-  // const [can_upload, setCanUpload] = useState(false);
-  // const [can_submit, setCanSubmit] = useState(false);
+  const [can_upload, setCanUpload] = useState(false);
+  const [can_submit, setCanSubmit] = useState(false);
 
 
   // async function getAccount() {
@@ -128,9 +128,9 @@ export default function AppUploadForm(props) {
   const onChangeSeason = event => {
     setFileSeason(event.target.value);
   };
-  // const onChangeNik = event => {
-  //   setFileNik(event.target.value);
-  // };
+  const onChangeNik = event => {
+    setFileNik(event.target.value);
+  };
 
 
   const onUploadHandler = async (event) => {
@@ -292,6 +292,7 @@ export default function AppUploadForm(props) {
           }}
         >
             <Typography sx={{ fontWeight: 'bold', marginBottom: '10px'  }}>Details of Transaction </Typography>
+            <Typography sx={{ fontWeight: 'bold', marginBottom: '10px'  }}>Check Hash File </Typography>
             <Stack direction="row" useFlexGap flexWrap="wrap">
               <Box sx={{ border: '1px solid grey', width: "25%"}}>  
                 <Typography sx={{ fontWeight: 'bold', border: '1px solid grey', padding: '5px', width: '100%'}}>Issuer </Typography>
@@ -301,8 +302,8 @@ export default function AppUploadForm(props) {
               </Box>
               <Box sx={{ border: '1px solid grey', borderLeft: '0', width: "75%"}}>
                 <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px', width: "100%"}}> {account_eth} </Typography>       
-                <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px'}}> {new_file_hash} </Typography>
                 <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px'}}> {nik} </Typography>
+                <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px'}}> {new_file_hash} </Typography>
                 <Typography sx={{ border: '1px solid grey', borderLeft: '0', padding: '5px'}}> {new_file_timestamp}  </Typography>                 
               </Box>
             </Stack>  

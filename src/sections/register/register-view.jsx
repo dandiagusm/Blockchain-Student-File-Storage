@@ -12,7 +12,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { alpha, useTheme } from '@mui/material/styles';
 // import InputAdornment from '@mui/material/InputAdornment';
 
-import { useRouter } from 'src/routes/hooks';
+// import { useRouter } from 'src/routes/hooks';
 
 import { bgGradient } from 'src/theme/css';
 
@@ -39,7 +39,7 @@ const contract = new web3.eth.Contract(
 export default function RegisterView() {
   const theme = useTheme();
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');

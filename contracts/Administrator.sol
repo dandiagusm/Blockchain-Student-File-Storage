@@ -51,8 +51,10 @@ contract Administrator {
         Admin memory admin = Admins[email];
 
         // Check if the admin with the given email exists
+        //keccak256(bytes(nik)) == keccak256(bytes(Students[i].nik)
         require(
-            bytes(Admins[email].name).length != 0 && bytes(Admins[password].password).length != 0 ,
+            keccak256(bytes(Admins[email].email)) == keccak256(bytes(email)) && keccak256(bytes(Admins[email].password)) == keccak256(bytes(password)),
+            // bytes(Admins[email].name).length == email && bytes(Admins[email].password).length != 0 ,
             "Admin does not exist"
         );
 

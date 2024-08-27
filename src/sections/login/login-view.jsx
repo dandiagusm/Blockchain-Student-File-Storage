@@ -1,3 +1,4 @@
+import Web3 from 'web3';
 import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 
@@ -18,18 +19,63 @@ import { bgGradient } from 'src/theme/css';
 
 import Iconify from 'src/components/iconify';
 
+import configuration from '../../../build/contracts/Administrator.json';
+
+// ----------------------------------------------------------------------
+
+const CONTRACT_ADDRESS = configuration.networks['5777'].address;
+const CONTRACT_ABI = configuration.abi;
+
+const web3 = new Web3(
+  // 'http://127.0.0.1:9545'
+  window.ethereum
+);
+const contract = new web3.eth.Contract(
+  CONTRACT_ABI,
+  CONTRACT_ADDRESS
+);
+
 // ----------------------------------------------------------------------
 
 export default function LoginView() {
   const theme = useTheme();
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+  const onChangeEmail = event => {
+    setEmail(event.target.value);
+  };
+
+  const onChangePassword = event => {
+    setPassword(event.target.value);
+  };
 
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleClick = () => {
-    router.push('/');
+  const handleClick = async (event) => {
+    event.preventDefault();
+
+    // const accounts = await web3.eth.requestAccounts();
+    
+    try {
+      const resp = await contract.methods.getAdmin(email, password).call();
+      console.log("LOGIN", resp);
+      sessionStorage.setItem("email", resp._email);
+      sessionStorage.setItem("name", resp._name);
+      sessionStorage.setItem("password", resp._password);
+      // console.log("session", sessionStorage.getItem("email"))
+      router.push('/');
+
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  // const handleClick = () => {
+  //   router.push('/');
+  // };
 
   // const handleRegister = () => {
   //   router.push('/register');
@@ -38,12 +84,13 @@ export default function LoginView() {
   const renderForm = (
     <>
       <Stack spacing={3}>
-        <TextField name="email" label="Email" />
+        <TextField name="email" label="Email" value={email} onChange={onChangeEmail}/>
 
         <TextField
           sx={{ marginTop: 4}}
           name="password"
           label="Password"
+          value={password} onChange={onChangePassword}
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (

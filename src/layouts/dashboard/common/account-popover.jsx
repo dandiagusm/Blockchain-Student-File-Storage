@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Popover from '@mui/material/Popover';
 import { alpha } from '@mui/material/styles';
@@ -13,21 +15,10 @@ import { account } from 'src/_mock/account';
 
 // ----------------------------------------------------------------------
 
-// const MENU_OPTIONS = [
-//   {
-//     label: 'Profile',
-//     icon: 'eva:person-fill',
-//   },
-//   {
-//     label: 'Settings',
-//     icon: 'eva:settings-2-fill',
-//   },
-// ];
-
-// ----------------------------------------------------------------------
-
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -35,6 +26,13 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     setOpen(null);
+  };
+
+  const handleLogout = () => {
+    sessionStorage.setItem("email", '');
+    sessionStorage.setItem("name", '');
+    sessionStorage.setItem("password", '');
+    navigate("/login");  
   };
 
   return (
@@ -60,7 +58,7 @@ export default function AccountPopover() {
             border: (theme) => `solid 2px ${theme.palette.background.default}`,
           }}
         >
-          {account.displayName.charAt(0).toUpperCase()}
+          {sessionStorage.getItem("name")}
         </Avatar>
       </IconButton>
 
@@ -81,10 +79,11 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+            {/* {account.displayName} */}
+            {sessionStorage.getItem("name")}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {sessionStorage.getItem("email")}
           </Typography>
         </Box>
 
@@ -104,7 +103,9 @@ export default function AccountPopover() {
           onClick={handleClose}
           sx={{ typography: 'body2', color: 'error.main', py: 1.5 }}
         >
-          Logout
+          <Button variant="contained" onClick={handleLogout}>
+            Logout
+          </Button>
         </MenuItem>
       </Popover>
     </>
