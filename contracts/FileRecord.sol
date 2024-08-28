@@ -33,13 +33,11 @@ contract FileRecord {
 
         StdFile memory file_temp = getStdFile(_ipfs_hash);
 
-        // Check if file with the given hash already exists
         require(
             bytes(file_temp.ipfs_hash).length == 0,
             "Files with this ID already exists"
         );
 
-        // Create the certificate
         StdFile memory file = StdFile({
             issuer: _issuer,
             nik: _nik,
@@ -48,11 +46,9 @@ contract FileRecord {
             created_time: _created_time
         });
 
-        // Store the certificate in the mapping
         StdFiles[fileCounter] = file;
 
         fileCounter = fileCounter + 1;
-        // Emit an event
         emit StdFileGenerated(_ipfs_hash);
     }
 
