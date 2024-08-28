@@ -16,23 +16,19 @@ contract Administrator {
         string memory _name,
         string memory _password
     ) public {
-        // Check if certificate with the given ID already exists
         require(
             bytes(Admins[_email].email).length == 0,
             "Admin with this email already exists"
         );
 
-        // Create the certificate
         Admin memory admin = Admin({
             email: _email,
             name: _name,
             password: _password
         });
 
-        // Store the certificate in the mapping
         Admins[_email] = admin;
 
-        // Emit an event
         emit AdminGenerated(_email);
     }
 
@@ -50,15 +46,11 @@ contract Administrator {
     {
         Admin memory admin = Admins[email];
 
-        // Check if the admin with the given email exists
-        //keccak256(bytes(nik)) == keccak256(bytes(Students[i].nik)
         require(
             keccak256(bytes(Admins[email].email)) == keccak256(bytes(email)) && keccak256(bytes(Admins[email].password)) == keccak256(bytes(password)),
-            // bytes(Admins[email].name).length == email && bytes(Admins[email].password).length != 0 ,
             "Admin does not exist"
         );
 
-        // Return the values from the certificate
         return (
             admin.name,
             admin.email,
