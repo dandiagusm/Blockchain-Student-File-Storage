@@ -141,7 +141,7 @@ export default function StudentsPage() {
     comparator: getComparator(order, orderBy),
     filterName,
   });
-  // console.log("fill",dataFiltered);
+  
   function handleClickStudent(event, row){
     navigate("/student-detail", { state: row } );  
   }
@@ -156,8 +156,7 @@ export default function StudentsPage() {
         comparator: getComparator(order, orderBy),
         filterName,
       });
-      // console.log("filtered student ", resp);
-      // console.log("list student ", students_list);
+
       setStudents(filtered);
     } catch (e) {
       console.error("Failed to fetch student")
