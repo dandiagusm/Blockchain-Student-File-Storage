@@ -46,19 +46,12 @@ const contract = new web3.eth.Contract(
 );
 
 export default function StudentsPage() {
-  // const {students} = props.props.props;
-  // const [account_eth , setAccount] = useState('');
-  // const [contract_std , setContractStd] = useState('');
   const [students_list , setStudents] = useState([]);
 
 
   const getAccount = async () => {
     // const accounts = await web3.eth.requestAccounts();
-    // const accounts = await web3.eth.getAccounts();
-    // const account = accounts[0];
-    // setContractStd(contract);
-    // setAccount(account);
-    // console.log(account_eth);
+
   }
 
   const [new_student_name, setNewName] = useState('');
@@ -77,7 +70,6 @@ export default function StudentsPage() {
     e.preventDefault();
     try {
       const resp2 = await contract.methods.generateStudent(new_student_nik,new_student_name).send({ from: accounts[0] });
-      // const resp2 = await contract.methods.isStudent("123456").call();
       console.log("ADD Student ", resp2);
 
       // setNewName("");
@@ -89,7 +81,6 @@ export default function StudentsPage() {
     }
   };
   
-  // console.log("student page", provider);
   const navigate = useNavigate();
 
   const [page, setPage] = useState(0);
@@ -100,8 +91,6 @@ export default function StudentsPage() {
 
   const handleClickOpen = () => {
     setOpen(true);
-    // const resp = contract.methods.getAllStudents().call();
-    // console.log("ALL Student ", resp);
   };
 
   const handleClose = () => {
