@@ -53,17 +53,6 @@ export default function StudentsTableRow({
 
         <TableCell >{nik}</TableCell>
 
-        {/* <TableCell >{files}</TableCell> */}
-
-        {/* <TableCell>
-          <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
-        </TableCell> */}
-
-        {/* <TableCell align="right">
-          <IconButton onClick={handleOpenMenu}>
-            <Iconify icon="eva:more-vertical-fill" />
-          </IconButton>
-        </TableCell> */}
       </TableRow>
 
       {/* <Popover
