@@ -30,7 +30,6 @@ import StudentsTableHead from '../students-table-head';
 import StudentsTableToolbar from '../students-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 import configuration from '../../../../build/contracts/StudentRecord.json';
-// import configuration from '../../../../build/contracts/Tickets.json';
 // ----------------------------------------------------------------------
 
 const CONTRACT_ADDRESS = configuration.networks['5777'].address;
@@ -71,9 +70,6 @@ export default function StudentsPage() {
     try {
       const resp2 = await contract.methods.generateStudent(new_student_nik,new_student_name).send({ from: accounts[0] });
       console.log("ADD Student ", resp2);
-
-      // setNewName("");
-      // setNewNik("");
       alert("Student Added");
 
     } catch (e) {
