@@ -54,27 +54,6 @@ export default function StudentsTableRow({
         <TableCell >{nik}</TableCell>
 
       </TableRow>
-
-      {/* <Popover
-        open={!!open}
-        anchorEl={open}
-        onClose={handleCloseMenu}
-        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        PaperProps={{
-          sx: { width: 140 },
-        }}
-      >
-        <MenuItem onClick={handleCloseMenu}>
-          <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
-          Edit
-        </MenuItem>
-
-        <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
-          <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
-          Delete
-        </MenuItem>
-      </Popover> */}
     </>
   );
 }
