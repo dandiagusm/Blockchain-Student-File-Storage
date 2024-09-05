@@ -5,10 +5,7 @@ import PropTypes from 'prop-types';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-// import Popover from '@mui/material/Popover';
 import TableRow from '@mui/material/TableRow';
-// import Checkbox from '@mui/material/Checkbox';
-// import MenuItem from '@mui/material/MenuItem';
 import TableCell from '@mui/material/TableCell';
 
 // ----------------------------------------------------------------------
