@@ -29,7 +29,6 @@ export default function StudentsTableRow({
         <TableCell align="center">
           {number}
         </TableCell>
-
         <TableCell component="th" scope="row" padding="none">
           <Stack direction="row" alignItems="left" spacing={2}>
             <Avatar alt={name} src={avatarUrl} />
@@ -40,9 +39,7 @@ export default function StudentsTableRow({
             </Link>
           </Stack>
         </TableCell>
-
         <TableCell >{nik}</TableCell>
-
       </TableRow>
     </>
   );
