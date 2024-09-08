@@ -18,8 +18,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import DialogContentText from '@mui/material/DialogContentText';
 
-// import { users } from 'src/_mock/user';
-
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
