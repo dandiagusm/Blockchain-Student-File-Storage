@@ -223,8 +223,6 @@ export default function StudentsPage() {
                   { id: 'No', label: 'No', width: '5px' },
                   { id: 'nikname', label: 'Name' },
                   { id: 'nik', label: 'Nomor Induk Siswa' },
-                  // { id: 'files', label: 'Files' },
-                  // { id: 'status', label: 'Status' },
                 ]}
               />
               <TableBody>
