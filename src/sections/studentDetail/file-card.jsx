@@ -10,9 +10,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-// import Link from '@mui/material/Link';
-// import Typography from '@mui/material/Typography';
-
 
 import Label from 'src/components/label';
 
