@@ -62,7 +62,6 @@ export default function FileCard({ file }) {
         textTransform: 'uppercase',
       }}
     >
-      {/* {file.status} */}
       SHARED
     </Label>
   );
