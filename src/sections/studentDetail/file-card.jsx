@@ -90,9 +90,6 @@ export default function FileCard({ file }) {
       </Box>
 
       <Stack spacing={1} sx={{ p: 1 }}>
-        {/* <Link color="inherit" underline="hover" variant="subtitle2" noWrap onClick={onHandleClick()} >
-          Rapor Semester {file.season}
-        </Link> */}
         <Box
           sx={{
             textAlign: "center",
