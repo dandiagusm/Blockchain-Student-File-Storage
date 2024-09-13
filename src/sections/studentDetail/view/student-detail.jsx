@@ -57,10 +57,8 @@ export default function StudentDetailView() {
     // e.preventDefault();
     try {
       const files_temp = await contract.methods.getFilesByNik(nik).call();
-      // console.log("Student File ", files_temp);
       setFiles(files_temp);
 
-      // return files_temp;
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +68,6 @@ export default function StudentDetailView() {
     if(window.ethereum){
       getAccount();
       getStudentFiles();
-      // console.log("std FIle",file_list)
     } else{
         console.log("MetaMask is not installed")
     }
