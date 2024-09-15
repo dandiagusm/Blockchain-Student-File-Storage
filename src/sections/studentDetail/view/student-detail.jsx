@@ -54,7 +54,6 @@ export default function StudentDetailView() {
   }
 
   const getStudentFiles = async (e) => {
-    // e.preventDefault();
     try {
       const files_temp = await contract.methods.getFilesByNik(nik).call();
       setFiles(files_temp);
