@@ -35,10 +35,6 @@ export default function StudentDetailView() {
   const {name, nik} = state.state;
 
   const getAccount = async () => {
-    // const accounts = await web3.eth.requestAccounts();
-    // const accounts = await web3.eth.getAccounts();
-    // const account = accounts[0];
-    // setContractStd(contract);
     // setAccount(account);
     // console.log(account_eth);
   }
