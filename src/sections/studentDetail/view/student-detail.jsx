@@ -29,7 +29,6 @@ const contract = new web3.eth.Contract(
 
 export default function StudentDetailView() {
   const [file_list, setFiles] = useState([]);
-  // const [check_render, setRender] = useState(false);
 
   const state = useLocation();
   const {name, nik} = state.state;
