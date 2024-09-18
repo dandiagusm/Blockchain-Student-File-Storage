@@ -7,8 +7,6 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-// import { files } from 'src/_mock/files';
-
 import FileCard from '../file-card';
 import FileSort from '../file-sort';
 import AppUploadForm from '../app-upload-form';
