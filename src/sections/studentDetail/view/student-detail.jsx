@@ -35,7 +35,6 @@ export default function StudentDetailView() {
 
   const getAccount = async () => {
     // setAccount(account);
-    // console.log(account_eth);
   }
 
   const renderHeaderListFile = () => {
