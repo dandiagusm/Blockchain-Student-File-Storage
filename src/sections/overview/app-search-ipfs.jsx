@@ -57,7 +57,6 @@ export default function AppSearchIpfs({}) {
       setSeason(files_temp.season);
       setTime(files_temp.created_time);
       setClick(true);
-      // console.log(files_temp);
 
       if (files_temp.nik.length != 0){
         setRender(true);
