@@ -102,7 +102,6 @@ const renderFileDetail = () => {
       <Box
         component="form"
         sx={{ paddingTop: 2, marginTop: 4 }}
-        // noValidate
         // autoComplete="off"
         bgcolor= "#FFFFFF"
         padding= "2"
