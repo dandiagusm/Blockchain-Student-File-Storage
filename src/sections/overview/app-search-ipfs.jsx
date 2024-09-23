@@ -32,7 +32,6 @@ const contract = new web3.eth.Contract(
 );
 
 // ----------------------------------------------------------------------
-// import {API_Key, API_Secret, JWT} from "../../utils/constants.js"
 
 export default function AppSearchIpfs({}) {
   const [ipfs_hash, setIpfsHash] = useState('');
